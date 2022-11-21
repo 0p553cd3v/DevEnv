@@ -41,15 +41,15 @@ check_if_fail
 
 #create base directories
 create_dir "$DDE_CONF_DIR"
-create_dir "$DDE_CONF_DIR/devenv"
+create_dir "$DDE_CONF_DIR/ubuntu"
 create_dir "$DDE_LOG_DIR"
 create_dir "$DCV_DIR"
 create_dir "$DDE_DCV_DIR"
-create_dir "$DDE_DCV_DIR/devenv"
+create_dir "$DDE_DCV_DIR/ubuntu"
 
 copy_file $DDE_BLD_DIR/docker-compose.yaml $DDE_CONF_DIR
-copy_file $DDE_SRC_DIR/devenv/Dockerfile $DDE_CONF_DIR/devenv
-copy_file $DDE_REPO_DIR/config/devenv/x11vnc.service $DDE_CONF_DIR/devenv
+copy_file $DDE_SRC_DIR/ubuntu/Dockerfile $DDE_CONF_DIR/devenv/ubuntu
+copy_file $DDE_REPO_DIR/config/ubuntu/x11vnc.service $DDE_CONF_DIR/ubuntu
 
 if [[ $1 -eq null ]]; then
 	echo -e "\033[0;33m !!! Before running main script please modify or append config files in $HOME/.config/devenv/!!\0033[0m"

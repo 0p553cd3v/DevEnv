@@ -22,8 +22,26 @@ To run this project following prerequisites have to be fulfilled:
 - Docker Desktop installed
 
 ## Launch
-* ...
+To run this project, make following instructions:
+* Create folder for code in user folder
 ```
-Code snipet
+$ mkdir Git && cd $_
 ```
+* Download git repository 
+```
+$ git clone https://github.com/0p553cd3v/DevEnv.git
+```
+* Run preparation script
+```
+bash $HOME/Git/RPH-PiHole/tools/def_setup.sh
+```
+* Modify configuration and build files under: 
+- $HOME/.config/devenv/docker-compose.yaml
+- $HOME/.config/devenv/ubuntu/config.yml
+- $HOME/.config/devenv/ubuntu/Dockerfile
+* Run deployment script
+```
+$ bash $HOME/Git/RPI-PiHole/tools/deploy.sh
+```
+* Syslog server is up and running
 ## Notes
