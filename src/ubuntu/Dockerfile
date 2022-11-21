@@ -11,13 +11,12 @@ RUN apt-get install -y x11vnc xvfb
 
 COPY x11vnc.service /lib/systemd/system/
 
-RUN systemctl daemon-reload sudo
-RUN systemctl enable x11vnc.service sudo
-RUN systemctl start x11vnc.service sudo
+RUN chkconfig x11vnc on sudo
+RUN service x11vnc start sudo
 
 ENV DISPLAY :20
 
-EXPOSE 5920
+EXPOSE 5900
 
 #HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD nslookup -port=${PORT} cloudflare.com 127.0.0.1 || exit 1
 
