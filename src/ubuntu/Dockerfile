@@ -2,9 +2,9 @@ FROM ubuntu:latest
 
 RUN apt-get update 
 RUN apt-get upgrade
-RUN pip install --upgrade pip \
-        && apt-get update \
-	    && apt-get install -y git x11vnc
+RUN apt install libffi-dev libssl-dev python3-dev -y sudo
+RUN apt install python3 python3-pip -y sudo
+RUN apt-get install -y x11vnc
 
 RUN apt-get install -y wget sudo
 RUN apt-get install -y nano sudo
