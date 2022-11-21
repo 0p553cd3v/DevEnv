@@ -1,14 +1,12 @@
 version: "3"
 services:
-  container_name: #NOTE:change container name
-    image: image_name #NOTE:change image name
-    ports:
-    - "22:22/tcp" #NOTE:change necessary ports
+  devenv: #NOTE:change container name
+    image: devenv #NOTE:change image name
     networks:
     - docker-network
     restart: unless-stopped
     volumes:
-    - $HOME/docker-volumes/container_name/dir:/home/dir    #NOTE:change mounted volumes
+    - $HOME/docker-volumes/devenv/dir:/home/dir    #NOTE:change mounted volumes
 networks:
   docker-network:
 #    driver: bridge
