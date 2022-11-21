@@ -33,7 +33,7 @@ $ git clone https://github.com/0p553cd3v/DevEnv.git
 ```
 * Run preparation script
 ```
-bash $HOME/Git/RPH-PiHole/tools/def_setup.sh
+bash $HOME/Git/DevEnv/tools/def_setup.sh
 ```
 * Modify configuration and build files under: 
 - $HOME/.config/devenv/docker-compose.yaml

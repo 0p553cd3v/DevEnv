@@ -2,12 +2,14 @@
 
 curl --proto '=https' --tlsv1.2 -sSf  https://raw.githubusercontent.com/0p553cd3v/Bash-common-lib/master/tools/install.sh | bash
 
+export USR_CONF_DIR=$HOME/.config/
+export USR_LOG_DIR=$HOME/.config/
 export DDE_TLS_DIR="$(dirname -- "$(readlink -f "${BASH_SOURCE}")")"
 export DDE_REPO_DIR="$(dirname -- "$(readlink -f "$DDE_TLS_DIR")")"
 export DDE_BLD_DIR=$DDE_REPO_DIR/build
 export DDE_SRC_DIR=$DDE_REPO_DIR/src
-export DDE_CONF_DIR=$HOME/.config/devenv/
-export DDE_LOG_DIR=$HOME/.logs/devenv/
+export DDE_CONF_DIR=$USR_CONF_DIR/devenv/
+export DDE_LOG_DIR=$USR_LOG_DIR/devenv/
 export DDE_DIR=$HOME/docker-volumes/
 export DDE_DCV_DIR=$DCV_DIR/devenv/
 
@@ -27,6 +29,8 @@ enotify "General Docker volumes dir: $DDE_DIR"
 enotify "Docker volumes dir: $DDE_DCV_DIR"
 
 create_file ~/.bash_profile
+add_line_to_file "export USR_CONF_DIR=$USR_CONF_DIR" ~/.bash_profile "export USR_CONF_DIR"
+add_line_to_file "export USR_LOG_DIR=$USR_LOG_DIR" ~/.bash_profile "export USR_LOG_DIR"
 add_line_to_file "export DDE_REPO_DIR=$DDE_REPO_DIR" ~/.bash_profile "export DDE_REPO_DIR"
 add_line_to_file "export DDE_TLS_DIR=$DDE_TLS_DIR" ~/.bash_profile "export DDE_TLS_DIR"
 add_line_to_file "export DDE_BLD_DIR=$DDE_BLD_DIR" ~/.bash_profile "export DDE_BLD_DIR"
@@ -40,6 +44,9 @@ source ~/.bash_profile
 check_if_fail
 
 #create base directories
+create_dir "$USR_CONF_DIR"
+create_dir "$USR_LOG_DIR"
+create_dir "$DDE_CONF_DIR"
 create_dir "$DDE_CONF_DIR"
 create_dir "$DDE_CONF_DIR/ubuntu"
 create_dir "$DDE_LOG_DIR"
