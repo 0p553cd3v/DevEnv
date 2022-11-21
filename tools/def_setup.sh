@@ -47,7 +47,6 @@ check_if_fail
 create_dir "$USR_CONF_DIR"
 create_dir "$USR_LOG_DIR"
 create_dir "$DDE_CONF_DIR"
-create_dir "$DDE_CONF_DIR"
 create_dir "$DDE_CONF_DIR/ubuntu"
 create_dir "$DDE_LOG_DIR"
 create_dir "$DCV_DIR"
