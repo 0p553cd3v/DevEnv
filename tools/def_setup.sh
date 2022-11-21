@@ -10,7 +10,7 @@ export DDE_BLD_DIR=$DDE_REPO_DIR/build
 export DDE_SRC_DIR=$DDE_REPO_DIR/src
 export DDE_CONF_DIR=$USR_CONF_DIR/devenv/
 export DDE_LOG_DIR=$USR_LOG_DIR/devenv/
-export DDE_DIR=$HOME/docker-volumes/
+export DCV_DIR=$HOME/docker-volumes/
 export DDE_DCV_DIR=$DCV_DIR/devenv/
 
 source /lib/sh/logging.sh $DDE_LOG_DIR
