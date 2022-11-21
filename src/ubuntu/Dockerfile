@@ -11,6 +11,8 @@ RUN apt-get install -y x11vnc xvfb
 
 COPY x11vnc.service /lib/systemd/system/
 
+RUN apt-get install chkconfig sudo
+
 RUN chkconfig x11vnc on sudo
 RUN service x11vnc start sudo
 
