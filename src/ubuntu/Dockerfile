@@ -2,16 +2,12 @@ FROM ubuntu:latest
 
 RUN apt-get update 
 RUN apt-get upgrade
-RUN apt install -y libffi-dev sudo
-RUN apt install -y libssl-dev sudo
-RUN apt install -y python3-dev sudo
-RUN apt install -y python3 sudo
-RUN apt install -y python3-pip sudo
-RUN apt install -y x11vnc sudo
 
 RUN apt-get install -y wget sudo
 RUN apt-get install -y nano sudo
 RUN apt-get install -y dnsutils sudo
+
+RUN apt-get install -y x11vnc xvfb 
 
 COPY x11vnc.service /lib/systemd/system/
 
