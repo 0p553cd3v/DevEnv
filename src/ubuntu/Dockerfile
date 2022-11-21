@@ -2,12 +2,12 @@ FROM ubuntu:latest
 
 RUN apt-get update 
 RUN apt-get upgrade
-RUN apt-get install libffi-dev -y sudo
-RUN apt-get install libssl-dev -y sudo
-RUN apt-get install python3-dev -y sudo
-RUN apt-get install python3 -y sudo
-RUN apt-get install python3-pip -y sudo
-RUN apt-get install -y x11vnc
+RUN apt-get install -y libffi-dev sudo
+RUN apt-get install -y libssl-dev sudo
+RUN apt-get install -y python3-dev sudo
+RUN apt-get install -y python3 sudo
+RUN apt-get install -y python3-pip sudo
+RUN apt-get install -y x11vnc sudo
 
 RUN apt-get install -y wget sudo
 RUN apt-get install -y nano sudo
