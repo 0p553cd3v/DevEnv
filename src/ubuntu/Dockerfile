@@ -3,8 +3,8 @@ FROM ubuntu:latest
 RUN apt-get update 
 RUN apt-get upgrade
 RUN apt install libffi-dev -y sudo
-RUN libssl-dev -y sudo
-RUN python3-dev -y sudo
+RUN apt install libssl-dev -y sudo
+RUN apt install  python3-dev -y sudo
 RUN apt install python3 -y sudo
 RUN apt install python3-pip -y sudo
 RUN apt-get install -y x11vnc
