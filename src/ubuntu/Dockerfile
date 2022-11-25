@@ -3,23 +3,29 @@ FROM ubuntu:latest
 RUN apt-get update 
 RUN apt-get upgrade
 
+#Install basic tools
+
 RUN apt-get install -y wget sudo
 RUN apt-get install -y nano sudo
 RUN apt-get install -y dnsutils sudo
 
+#Install python
+
+RUN apt install libffi-dev sudo
+RUN apt install libssl-dev sudo
+RUN apt install python3-dev sudo
+RUN apt install python3 sudo
+RUN apt install python3-pip sudo
+
+#Install vnc client
+
 RUN apt-get install -y x11vnc xvfb 
 
-COPY x11vnc.service /lib/systemd/system/
-
-RUN apt-get install chkconfig sudo
-
-RUN chkconfig x11vnc on sudo
-RUN service x11vnc start sudo
-
-ENV DISPLAY :20
+#ENV DISPLAY :20
 
 EXPOSE 5900
 
 #HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD nslookup -port=${PORT} cloudflare.com 127.0.0.1 || exit 1
 
-CMD tail -f /dev/null
+CMD /usr/bin/x11vnc -forever -display :0 -auth dev -passwd devenv 
+#CMD tail -f /dev/null
