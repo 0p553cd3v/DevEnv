@@ -1,18 +1,23 @@
 #!/bin/sh
-CWD="$(pwd)"
-cd
-echo "$(pwd)"
-mkdir docker-volumes
-cd docker-volumes
-#NOTE: Below please create dir for specific containers "mkdir container_name"
+
+source /lib/sh/logging.sh $DDE_LOG_DIR
+source /lib/sh/common.sh
+source /lib/sh/checks.sh
 
 
-cd $CWD
-cd ../
-cp build/docker-compose.yaml $HOME/docker-volumes
 
-#NOTE: Below please copy all necesary configs for specific containers "cp config/container_name/container_conig_name.yml $HOME/docker-volumes/container_name"
+Log_Open
 
-cd $HOME/docker-volumes
-docker-compose up -d --force-recreate
+run_func 0 "bash $DDE_BLD_DIR/build.sh"
+
+run_func 0 "cp $DDE_CONF_DIR/docker-compose.yaml $DDE_DCV_DIR"
+
+
+
+#Run docker-compose
+cd $RPH_DCV_DIR
+run_func 0 "docker compose -p devenv up -d --force-recreate"
+
+Log_Close
+
 
