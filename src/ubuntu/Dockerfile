@@ -1,5 +1,9 @@
 FROM ubuntu:latest
 
+#Clock synchronisation for Docekr build on WSL
+RUN hwclock -s sudo
+
+#Update and upgrade before build
 RUN apt-get update 
 RUN apt-get upgrade
 
