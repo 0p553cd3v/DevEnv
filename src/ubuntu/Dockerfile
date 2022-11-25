@@ -1,5 +1,9 @@
 FROM ubuntu:latest
 
+#Set time zone
+ENV TZ=Europe/Warsaw
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 #Update and upgrade before build
 RUN apt-get clean
 RUN apt-get update 
