@@ -11,11 +11,11 @@ RUN apt-get install -y dnsutils sudo
 
 #Install python
 
-RUN apt install -y libffi-dev sudo
-RUN apt install -y libssl-dev sudo
-RUN apt install -y python3-dev sudo
-RUN apt install -y python3 sudo
-RUN apt install -y python3-pip sudo
+RUN apt-get install -y libffi-dev sudo
+RUN apt-get install -y libssl-dev sudo
+RUN apt-get install -y python3-dev sudo
+RUN apt-get install -y python3 sudo
+RUN apt-get install -y python3-pip sudo
 
 #Install vnc client
 
