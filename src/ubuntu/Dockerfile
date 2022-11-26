@@ -29,8 +29,17 @@ RUN apt-get install -y x11vnc xvfb
 RUN mkdir ~/.vnc
 RUN x11vnc -storepasswd 12345 /etc/x11vnc.pwd
 
-#Install display manager
+#Install and configure display manager
 RUN apt-get install -y lightdm sudo
+RUN echo "/usr/sbin/lightdm" > /etc/X11/default-display-manager
+RUN echo "\
+[LightDM]\n\
+[Seat:*]\n\
+type=xremote\n\
+xserver-display-number=0\n\
+autologin-user=root\n\
+autologin-user-timeout=0\n\
+" > /etc/lightdm/lightdm.conf.d/lightdm.conf
 
 #Install Ubuntu desktop
 RUN apt-get install -y ubuntu-desktop sudo
@@ -41,5 +50,5 @@ EXPOSE 5900
 
 #HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD nslookup -port=${PORT} cloudflare.com 127.0.0.1 || exit 1
 
-ENTRYPOINT /usr/bin/x11vnc -auth guess -forever -display :0 -rfbauth /etc/x11vnc.pwd -create -o /var/log/x11vnc.log
+ENTRYPOINT /usr/bin/x11vnc -auth guess -forever -display :0 -rfbauth /etc/x11vnc.pwd -create -o /var/log/x11vnc.log & service lightdm start
 #CMD tail -f /dev/null
