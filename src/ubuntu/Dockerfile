@@ -14,7 +14,7 @@ RUN apt-get upgrade
 RUN apt-get install -y wget sudo
 RUN apt-get install -y nano sudo
 RUN apt-get install -y dnsutils sudo
-RUN apt-get net-tools -y sudo
+RUN apt-get install -y net-tools sudo
 
 #Install python
 
