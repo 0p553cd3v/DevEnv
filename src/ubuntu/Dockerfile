@@ -14,6 +14,7 @@ RUN apt-get upgrade
 RUN apt-get install -y wget sudo
 RUN apt-get install -y nano sudo
 RUN apt-get install -y dnsutils sudo
+RUN apt-get net-tools -y
 
 #Install python
 
@@ -27,6 +28,12 @@ RUN apt-get install -y python3-pip sudo
 RUN apt-get install -y x11vnc xvfb 
 RUN mkdir ~/.vnc
 RUN x11vnc -storepasswd 12345 /etc/x11vnc.pwd
+
+#Install display manager
+RUN apt-get install -y lightdm sudo
+
+#Install Ubuntu desktop
+RUN apt-get install -y ubuntu-desktop sudo
 
 #ENV DISPLAY :20
 
