@@ -30,7 +30,7 @@ RUN mkdir ~/.vnc
 RUN x11vnc -storepasswd 12345 /etc/x11vnc.pwd
 
 #Install and configure display manager
-RUN apt-get install -y lightdm sudo
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y lightdm sudo
 RUN echo "/usr/sbin/lightdm" > /etc/X11/default-display-manager
 RUN echo "\
 [LightDM]\n\
