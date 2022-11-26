@@ -24,9 +24,9 @@ RUN apt-get install -y python3 sudo
 RUN apt-get install -y python3-pip sudo
 
 #Install vnc client
+RUN apt-get install -y x11vnc xvfb 
 RUN mkdir ~/.vnc
 RUN x11vnc -storepasswd 12345 ~/.vnc/passwd
-RUN apt-get install -y x11vnc xvfb 
 
 #ENV DISPLAY :20
 
