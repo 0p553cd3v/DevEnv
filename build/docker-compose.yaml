@@ -1,9 +1,9 @@
 version: "3"
 services:
   devenv: #NOTE:change container name
-    image: devenv-docker-network #NOTE:change image name
+    image: devenv #NOTE:change image name
     networks:
-    - docker-network
+    - devenv-docker-network
     restart: unless-stopped
     volumes:
     - $DDE_DCV_DIR/ubuntu:/home/dir    #NOTE:change mounted volumes
