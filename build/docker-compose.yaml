@@ -5,6 +5,8 @@ services:
     networks:
     - devenv-docker-network
     restart: unless-stopped
+    ports:
+      -"5900:5900"
     volumes:
     - $DDE_DCV_DIR/ubuntu:/home/dir    #NOTE:change mounted volumes
 networks:
