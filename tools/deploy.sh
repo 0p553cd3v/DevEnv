@@ -15,7 +15,7 @@ run_func 0 "cp $DDE_CONF_DIR/docker-compose.yaml $DDE_DCV_DIR"
 
 
 #Run docker-compose
-cd $RPH_DCV_DIR
+cd $DDE_DCV_DIR
 run_func 0 "docker compose -p devenv up -d --force-recreate"
 
 Log_Close
