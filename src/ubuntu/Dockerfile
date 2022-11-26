@@ -26,7 +26,7 @@ RUN apt-get install -y python3-pip sudo
 #Install vnc client
 RUN apt-get install -y x11vnc xvfb 
 RUN mkdir ~/.vnc
-RUN x11vnc -storepasswd 12345 ~/.vnc/passwd
+RUN x11vnc -storepasswd 12345 /etc/x11vnc.pwd
 
 #ENV DISPLAY :20
 
@@ -34,5 +34,5 @@ EXPOSE 5900
 
 #HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD nslookup -port=${PORT} cloudflare.com 127.0.0.1 || exit 1
 
-ENTRYPOINT /usr/bin/x11vnc -forever -display :0 -usepw -create 
+ENTRYPOINT /usr/bin/x11vnc -auth guess -forever -display :0 -rfbauth /etc/x11vnc.pwd -create -o /var/log/x11vnc.log
 #CMD tail -f /dev/null
