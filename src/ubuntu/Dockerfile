@@ -47,7 +47,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 RUN echo "/usr/sbin/gdm3" > /etc/X11/default-display-manager
 
 #Install Ubuntu desktop
-#RUN apt-get install -y ubuntu-desktop sudo
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    ubuntu-desktop
 
 #ENV DISPLAY :20
 
