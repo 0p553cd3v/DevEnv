@@ -55,6 +55,7 @@ create_dir "$DDE_DCV_DIR/ubuntu"
 
 copy_file $DDE_BLD_DIR/docker-compose.yaml $DDE_CONF_DIR
 copy_file $DDE_SRC_DIR/ubuntu/Dockerfile $DDE_CONF_DIR/ubuntu
+copy_file $DDE_SRC_DIR/ubuntu/entrypoint.sh $DDE_CONF_DIR/ubuntu
 
 if [[ $1 -eq null ]]; then
 	echo -e "\033[0;33m !!! Before running main script please modify or append config files in $HOME/.config/devenv/!!\0033[0m"
