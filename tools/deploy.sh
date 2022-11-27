@@ -8,11 +8,7 @@ source /lib/sh/checks.sh
 
 Log_Open
 
-run_func 0 "bash $DDE_BLD_DIR/build.sh"
-
 run_func 0 "cp $DDE_CONF_DIR/docker-compose.yaml $DDE_DCV_DIR"
-
-
 
 #Run docker-compose
 cd $DDE_DCV_DIR
