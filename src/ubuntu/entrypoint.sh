@@ -14,4 +14,4 @@ while [ -z "$(service gdm3 status | grep 'is running')" ]; do
 done
 echo "gdm3 service started"
 
-x11vnc -auth guess -forever -noxrecord -display :0 -rfbauth /etc/x11vnc.pwd -o /var/log/x11vnc.log
+x11vnc -display :0 -auth guess -rfbauth /etc/x11vnc.pwd -o /var/log/x11vnc.log -repeat -loop -forever -noxrecord 
