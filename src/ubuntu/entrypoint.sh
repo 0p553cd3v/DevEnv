@@ -7,7 +7,7 @@ while [ -z "$(service dbus status | grep 'is running')" ]; do
 done
 echo "DBUS service started"
 
-service lightdm start
+service gdm3 start
 while [ -z "$(service gdm3 status | grep 'is running')" ]; do
     sleep 1
     echo "Waiting for gdm3 \n"
