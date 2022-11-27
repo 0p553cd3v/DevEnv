@@ -66,5 +66,7 @@ EXPOSE 5900
 
 ADD entrypoint.sh /etc/devenv/entrypoint.sh 
 
+USER root
+
 ENTRYPOINT "/etc/devenv/entrypoint.sh"
 #CMD tail -f /dev/null
