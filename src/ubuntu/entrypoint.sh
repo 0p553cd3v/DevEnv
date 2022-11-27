@@ -14,4 +14,10 @@ while [ -z "$(service gdm3 status | grep 'is running')" ]; do
 done
 echo "gdm3 service started"
 
-x11vnc -display :0 -auth guess -rfbauth /etc/x11vnc.pwd -o /var/log/x11vnc.log -repeat -loop -forever -noxrecord 
+
+touch ~/.Xauthority
+xauth generate :0 . trusted
+xauth add ${HOST}:0 . $(xxd -l 16 -p /dev/urandom)
+xauth list
+
+x11vnc -display :0 -auth guess -rfbauth /etc/x11vnc.pwd -o /var/log/x11vnc.log -rfbport 5900 -repeat -loop -forever -noxrecord -xkb
