@@ -3,14 +3,14 @@
 service dbus start 
 while [ "$(/sbin/service dbus status | grep 'is running')" ]; do
     sleep 1
-    echo "./n"
+    echo -e "Waiting fo dbus . \n"
 done
 echo "DBUS service started"
 
 service lightdm start
 while [ "$(/sbin/service lightdm status | grep 'is running')" ]; do
     sleep 1
-    echo "./n"
+    echo -e "Waiting fo lightdm . \n"
 done
 echo "LightDM service started"
 
