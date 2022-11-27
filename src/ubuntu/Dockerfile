@@ -22,7 +22,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     sudo \
     net-tools \
     dnsutils \
-    git 
+    git \
+    accountsservice 
 
 #Install python
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
