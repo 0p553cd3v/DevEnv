@@ -64,7 +64,7 @@ EXPOSE 5900
 
 #HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD nslookup -port=${PORT} cloudflare.com 127.0.0.1 || exit 1
 
-ADD entrypoint.sh /etc/devenv
+ADD entrypoint.sh /etc/devenv/entrypoint.sh 
 
 ENTRYPOINT "/etc/devenv/entrypoint.sh"
 #CMD tail -f /dev/null
