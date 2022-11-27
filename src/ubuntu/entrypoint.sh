@@ -8,10 +8,10 @@ done
 echo "DBUS service started"
 
 service lightdm start
-while [ -z "$(service lightdm status | grep 'is running')" ]; do
+while [ -z "$(service gdm3 status | grep 'is running')" ]; do
     sleep 1
-    echo "Waiting for lightdm \n"
+    echo "Waiting for gdm3 \n"
 done
-echo "LightDM service started"
+echo "gdm3 service started"
 
 /usr/bin/x11vnc -auth guess -forever -display :0 -rfbauth /etc/x11vnc.pwd -create -o /var/log/x11vnc.log

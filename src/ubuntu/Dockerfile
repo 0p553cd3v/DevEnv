@@ -42,19 +42,9 @@ RUN x11vnc -storepasswd 12345 /etc/x11vnc.pwd
 
 #Install and configure display manager
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    lightdm 
+    gdm3 
 
-RUN echo "/usr/sbin/lightdm" > /etc/X11/default-display-manager
-RUN echo "\
-[LightDM]\n\
-[Seat:*]\n\
-type=xremote\n\
-xserver-share=true\n\
-xserver-hostname=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null)\n\
-xserver-display-number=0\n\
-autologin-user=root\n\
-autologin-user-timeout=0\n\
-" > /etc/lightdm/lightdm.conf.d/lightdm.conf
+RUN echo "/usr/sbin/gdm3" > /etc/X11/default-display-manager
 
 #Install Ubuntu desktop
 #RUN apt-get install -y ubuntu-desktop sudo
