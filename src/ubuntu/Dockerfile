@@ -17,8 +17,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     less \
     vim \
     nano \
-    echo \
-    sleep \
     software-properties-common \
     man \
     sudo \

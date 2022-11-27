@@ -1,16 +1,16 @@
 #!/bin/bash
 
 service dbus start 
-while [ "$(/sbin/service dbus status | grep 'is running')" ]; do
+while [ "$(/bin/bash/service dbus status | grep 'is running')" ]; do
     sleep 1
-    echo -e "Waiting fo dbus . \n"
+    echo -e "Waiting fo dbus \n"
 done
 echo "DBUS service started"
 
 service lightdm start
-while [ "$(/sbin/service lightdm status | grep 'is running')" ]; do
+while [ "$(/bin/bash/service lightdm status | grep 'is running')" ]; do
     sleep 1
-    echo -e "Waiting fo lightdm . \n"
+    echo -e "Waiting for lightdm \n"
 done
 echo "LightDM service started"
 
