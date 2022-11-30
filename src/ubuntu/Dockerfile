@@ -47,7 +47,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 
 RUN echo "/usr/sbin/gdm3" > /etc/X11/default-display-manager
 
-RUN sed -i -e "/s/#WaylandEnable=false/WaylandEnable=false/g" /etc/gdm/custom.conf
+RUN sed -i -e "/s/#WaylandEnable=false/WaylandEnable=false/g" /etc/gdm3/custom.conf
 
 #Install Ubuntu desktop
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
