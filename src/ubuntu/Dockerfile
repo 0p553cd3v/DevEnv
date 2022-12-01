@@ -1,16 +1,17 @@
 FROM ubuntu:latest
 
+ENV DISPLAY=host.docker.internal:0.0
+
 #Set time zone
 ENV TZ=Europe/Warsaw
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 #Update and upgrade before build
-RUN apt-get clean
-RUN apt-get update 
-RUN apt-get upgrade
+RUN apt-get clean -y
+RUN apt-get update -y
+RUN apt-get upgrade -y
 
 #Install basic tools
-
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     wget \
     curl \
@@ -23,7 +24,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     net-tools \
     dnsutils \
     git \
-    accountsservice \
     ssh
 
 #Install python
@@ -32,28 +32,31 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     libssl-dev \
     python3-dev \
     python3 \
-    python3-pip 
+    python3-pip
 
-#Install vnc client
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    x11vnc \
-    xvfb 
-
-RUN x11vnc -storepasswd 12345 /etc/x11vnc.pwd
-
-#Install and configure display manager
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    gdm3 
-
-RUN echo "/usr/sbin/gdm3" > /etc/X11/default-display-manager
-
-RUN sed -i -e "s/#WaylandEnable=false/WaylandEnable=false/g" /etc/gdm3/custom.conf
+RUN DEBIAN_FRONTEND=noninteractive apt-get remove -y --auto-remove gdm3 
 
 #Install Ubuntu desktop
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    ubuntu-desktop
+    lubuntu-desktop
 
-#ENV DISPLAY :20
+#Install and configure display manager
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    lightdm 
+
+RUN rm /run/reboot-required*
+RUN echo "/usr/sbin/lightdm" > /etc/X11/default-display-manager
+RUN echo "\
+[LightDM]\n\
+[Seat:*]\n\
+type=xremote\n\
+xserver-hostname=host.docker.internal\n\
+xserver-display-number=0\n\
+autologin-session=Lubuntu\n\
+autologin-user=root\n\
+autologin-user-timeout=0\n\
+greeter-session=lightdm-gtk-greeter\n\
+" > /etc/lightdm/lightdm.conf.d/lightdm.conf
 
 EXPOSE 5900
 
@@ -65,4 +68,4 @@ RUN chmod +x /etc/devenv/entrypoint.sh
 
 ENTRYPOINT [ "/bin/sh", "/etc/devenv/entrypoint.sh" ]
 
-#CMD tail -f /dev/null
+CMD tail -f /dev/null

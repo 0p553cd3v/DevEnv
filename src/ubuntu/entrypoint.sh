@@ -1,19 +1,15 @@
 #!/bin/bash
+echo "*** Entrypoint - start ***\n"
 
+echo "*** Starting dbus service ***\n"
 service dbus start 
 while [ -z "$(service dbus status | grep 'is running')" ]; do
     sleep 1
-    echo "Waiting fo dbus \n"
+    echo ". \n"
 done
-echo "DBUS service started"
+echo "*** DBUS service started ***\n"
 
-service gdm3 start
-while [ -z "$(service gdm3 status | grep 'is running')" ]; do
-    sleep 1
-    echo "Waiting for gdm3 \n"
-done
-echo "gdm3 service started"
-
-x11vnc -display :0 -auth guess -rfbauth /etc/x11vnc.pwd -o /var/log/x11vnc.log -rfbport 5900 -many -repeat -forever -shared -noxdamage -xkb
-
-echo "x11vnc service started"
+echo "*** Starting lightdm service ***\n"
+service lightdm start
+echo "*** Starting lightdm service failed***\n"
+echo "*** Entrypoint - end ***\n"
